@@ -37,8 +37,12 @@ public class FileManager {
             public void run() {
                 if (config.getConfiguration().contains("entities")) {
                     config.getConfiguration().getConfigurationSection("entities").getKeys(false).forEach((id) -> {
-                        plugin.getEntities().put(id, new InfinityPigEntity(EntityType.valueOf(config.getString("entities." + id + ".type")), config.getLocation("entities." + id + ".location")));
-                        plugin.getEntities().get(id).spawn();
+                        try {
+                            plugin.getEntities().put(id, new InfinityPigEntity(EntityType.valueOf(config.getString("entities." + id + ".type")), config.getLocation("entities." + id + ".location")));
+                            plugin.getEntities().get(id).spawn();
+                        } catch (NullPointerException ex) {
+                            System.out.println("[InfinityPig] Entity " + id + " could not be loaded.");
+                        }
                     });
                 }
             }
