@@ -5,6 +5,7 @@ import java.util.Random;
 import lombok.Getter;
 import me.velz.infinitypig.commands.InfinityPigCommand;
 import me.velz.infinitypig.listeners.EntityDeathListener;
+import me.velz.infinitypig.listeners.VehicleEnterListener;
 import me.velz.infinitypig.objects.InfinityPigEntity;
 import me.velz.infinitypig.utils.FileManager;
 import me.velz.infinitypig.utils.MessageUtil;
@@ -40,6 +41,7 @@ public class InfinityPig extends JavaPlugin {
         this.getFileManager().loadConfig();
         MessageUtil.load();
         Bukkit.getPluginManager().registerEvents(new EntityDeathListener(this), this);
+        Bukkit.getPluginManager().registerEvents(new VehicleEnterListener(this), this);
         getCommand("infinitypig").setExecutor(new InfinityPigCommand(this));
     }
 
