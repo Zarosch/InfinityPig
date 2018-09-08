@@ -8,10 +8,10 @@ import me.velz.infinitypig.listeners.EntityDeathListener;
 import me.velz.infinitypig.objects.InfinityPigEntity;
 import me.velz.infinitypig.utils.FileManager;
 import me.velz.infinitypig.utils.MessageUtil;
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
+import me.velz.infinitypig.version.VersionMatcher;
+import me.velz.infinitypig.versions.Version;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,9 +27,15 @@ public class InfinityPig extends JavaPlugin {
     @Getter
     private final FileManager fileManager = new FileManager(this);
     
+    private final VersionMatcher versionMatcher = new VersionMatcher();
+    
+    @Getter
+    private Version version;
+    
     @Override
     public void onEnable() {
         InfinityPig.plugin = this;
+        this.version = versionMatcher.match();
         this.getFileManager().setDefaults();
         this.getFileManager().loadConfig();
         MessageUtil.load();
@@ -64,16 +70,7 @@ public class InfinityPig extends JavaPlugin {
     }
 
     private void disableAI(Entity entity) {
-        net.minecraft.server.v1_8_R3.Entity nmsEnt = ((CraftEntity) entity).getHandle();
-        NBTTagCompound tag = nmsEnt.getNBTTag();
-
-        if (tag == null) {
-            tag = new NBTTagCompound();
-        }
-
-        nmsEnt.c(tag);
-        tag.setInt("NoAI", 1);
-        nmsEnt.f(tag);
+        this.version.disableAI(entity);
     }
 
 }

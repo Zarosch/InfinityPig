@@ -23,7 +23,13 @@
 hs_err_pid*
 
 # Lib Folder
-lib/
+plugin/lib/
+1_8_R3/lib/
+1_12_R1/lib/
+abstraction/lib/
 
 # Target Folder
-target/
+plugin/target/
+1_8_R3/target/
+1_12_R1/target/
+abstraction/target/
