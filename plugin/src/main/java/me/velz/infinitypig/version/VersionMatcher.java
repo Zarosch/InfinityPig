@@ -24,7 +24,7 @@ public class VersionMatcher {
                     .findFirst().orElseThrow(() -> new RuntimeException("Your server version isn't supported in InfinityPig! (" + serverVersion +")"))
                     .newInstance();
         } catch (IllegalAccessException | InstantiationException ex) {
-            throw new RuntimeException(ex);
+            throw new RuntimeException(ex); 
         }
     }
     

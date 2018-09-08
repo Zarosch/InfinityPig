@@ -4,7 +4,7 @@
     <parent>
         <groupId>me.velz</groupId>
         <artifactId>InfinityPig-modules</artifactId>
-        <version>1.0</version>
+        <version>1.1</version>
     </parent>
     <artifactId>InfinityPig</artifactId>
     <packaging>jar</packaging>
@@ -57,19 +57,19 @@
         <dependency>
             <groupId>me.velz</groupId>
             <artifactId>InfinityPig-abstraction</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>me.velz</groupId>
             <artifactId>InfinityPig-1_8_R3</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>me.velz</groupId>
             <artifactId>InfinityPig-1_12_R1</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
