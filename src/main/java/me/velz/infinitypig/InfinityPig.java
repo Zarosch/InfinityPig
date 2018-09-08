@@ -7,6 +7,7 @@ import me.velz.infinitypig.commands.InfinityPigCommand;
 import me.velz.infinitypig.listeners.EntityDeathListener;
 import me.velz.infinitypig.objects.InfinityPigEntity;
 import me.velz.infinitypig.utils.FileManager;
+import me.velz.infinitypig.utils.MessageUtil;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -31,6 +32,7 @@ public class InfinityPig extends JavaPlugin {
         InfinityPig.plugin = this;
         this.getFileManager().setDefaults();
         this.getFileManager().loadConfig();
+        MessageUtil.load();
         Bukkit.getPluginManager().registerEvents(new EntityDeathListener(this), this);
         getCommand("infinitypig").setExecutor(new InfinityPigCommand(this));
     }

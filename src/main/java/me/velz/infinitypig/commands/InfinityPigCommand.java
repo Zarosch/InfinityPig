@@ -94,6 +94,7 @@ public class InfinityPigCommand implements CommandExecutor {
             plugin.removeAllEntities();
             plugin.getEntities().clear();
             plugin.getFileManager().loadConfig();
+            MessageUtil.load();
             cs.sendMessage(MessageUtil.PREFIX.getLocal() + MessageUtil.COMMAND_RELOAD.getLocal());
             return true;
         }
