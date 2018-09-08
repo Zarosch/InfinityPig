@@ -1,0 +1,8 @@
+me\velz\infinitypig\utils\ItemBuilder.class
+me\velz\infinitypig\utils\MessageUtil.class
+me\velz\infinitypig\InfinityPig.class
+me\velz\infinitypig\objects\InfinityPigEntity.class
+me\velz\infinitypig\listeners\EntityDeathListener.class
+me\velz\infinitypig\commands\InfinityPigCommand.class
+me\velz\infinitypig\utils\FileBuilder.class
+me\velz\infinitypig\utils\FileManager.class
