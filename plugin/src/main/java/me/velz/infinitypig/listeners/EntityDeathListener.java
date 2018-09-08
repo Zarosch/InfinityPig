@@ -17,6 +17,9 @@ public class EntityDeathListener implements Listener {
     @EventHandler
     public void onDeath(EntityDeathEvent event) {
         plugin.getEntities().values().stream().filter((entity) -> (entity.getEntityId() == event.getEntity().getEntityId())).forEachOrdered((entity) -> {
+            if(!plugin.getFileManager().isDropExp()) {
+                event.setDroppedExp(0);
+            }
             entity.spawn();
             entity.getEntityLocation().getWorld().playEffect(entity.getEntityLocation(), Effect.MOBSPAWNER_FLAMES, 20);
         });

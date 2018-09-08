@@ -21,6 +21,9 @@ public class FileManager {
 
     @Getter
     private ArrayList<String> names;
+    
+    @Getter
+    private boolean dropExp;
 
     @Getter
     private final FileBuilder config = new FileBuilder("plugins/InfinityPig/", "config.yml");
@@ -29,28 +32,27 @@ public class FileManager {
         this.getConfig().load();
         this.names = new ArrayList<>();
         this.language = this.getConfig().getString("language");
+        this.dropExp = this.getConfig().getBoolean("dropExp");
         this.getConfig().getStringList("infinitypig.names").forEach((name) -> {
             this.getNames().add(ChatColor.translateAlternateColorCodes('&', name));
         });
-        Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
-            @Override
-            public void run() {
-                if (config.getConfiguration().contains("entities")) {
-                    config.getConfiguration().getConfigurationSection("entities").getKeys(false).forEach((id) -> {
-                        try {
-                            plugin.getEntities().put(id, new InfinityPigEntity(EntityType.valueOf(config.getString("entities." + id + ".type")), config.getLocation("entities." + id + ".location")));
-                            plugin.getEntities().get(id).spawn();
-                        } catch (NullPointerException ex) {
-                            System.out.println("[InfinityPig] Entity " + id + " could not be loaded.");
-                        }
-                    });
-                }
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            if (config.getConfiguration().contains("entities")) {
+                config.getConfiguration().getConfigurationSection("entities").getKeys(false).forEach((id) -> {
+                    try {
+                        plugin.getEntities().put(id, new InfinityPigEntity(EntityType.valueOf(config.getString("entities." + id + ".type")), config.getLocation("entities." + id + ".location")));
+                        plugin.getEntities().get(id).spawn();
+                    } catch (NullPointerException ex) {
+                        System.out.println("[InfinityPig] Entity " + id + " could not be loaded.");
+                    }
+                });
             }
         }, 200L);
     }
 
     public void setDefaults() {
         this.getConfig().addDefault("language", "en");
+        this.getConfig().addDefault("dropExp", false);
         this.getConfig().addDefault("infinitypig.names", new String[]{
             "&dHilfe, ich bin ein armes Schwein",
             "&dHalt! Bitte schlag mich nicht.",
