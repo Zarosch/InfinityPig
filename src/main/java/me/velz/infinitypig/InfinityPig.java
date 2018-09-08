@@ -37,6 +37,10 @@ public class InfinityPig extends JavaPlugin {
         getCommand("infinitypig").setExecutor(new InfinityPigCommand(this));
     }
 
+    @Override
+    public void onDisable() {
+        removeAllEntities();
+    }
 
     public void removeAllEntities() {
         entities.values().forEach((entity) -> {
