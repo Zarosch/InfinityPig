@@ -14,7 +14,9 @@ public class VersionMatcher {
     @Getter
     private final List<Class<? extends Version>> versions = Arrays.asList(
             Version_1_8_R3.class,
-            Version_1_12_R1.class
+            Version_1_12_R1.class,
+            Version_1_13_R1.class,
+            Version_1_13_R2.class
     );
     
     public Version match() {
