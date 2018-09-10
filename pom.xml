@@ -17,6 +17,7 @@
         <module>1_12_R1</module>
         <module>plugin</module>
         <module>1_13_R2</module>
+        <module>1_13_R1</module>
     </modules>
     
     <build>
