@@ -1,5 +1,5 @@
 # InfinityPig
-With this Spigot plugin can you spawn an Entity they can be unlimited be killed.  
+With this Spigot plugin can you spawn an Entity they can unlimited be killed.  
   
 **Supported Spigot versions:** 1_8_R3, 1_12_R1, 1_13_R1, 1_13_R2  
   
